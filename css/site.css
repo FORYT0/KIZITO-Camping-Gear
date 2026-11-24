@@ -288,11 +288,40 @@ p{margin:0 0 1em}
 /* ---------- scroll hint on sideways section ---------- */
 .hdiv-pin{position:relative}
 .hint{position:absolute;z-index:5;right:calc(var(--gut) + 20px);top:clamp(84px,14vh,130px);display:flex;flex-direction:column;align-items:center;gap:.6rem;color:rgba(241,233,212,.9);pointer-events:none;transition:opacity .5s;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.hint .hand{width:74px;height:74px;animation:swipe 2.2s ease-in-out infinite;transform-origin:50% 80%}
+.hint .hand{width:96px;height:96px;filter:invert(1);opacity:.7}
 .hint span{font:800 .95rem/1 var(--display);letter-spacing:.22em;text-transform:uppercase;background:rgba(8,23,15,.55);padding:.5rem .8rem;border:1px solid rgba(230,180,58,.5)}
 .hint .chev{width:22px;height:22px;color:var(--gold);animation:bob 1.4s ease-in-out infinite}
 .hint.is-off{opacity:0}
 @keyframes swipe{0%{transform:translateX(26px) rotate(8deg);opacity:0}25%{opacity:1}70%{transform:translateX(-30px) rotate(-6deg);opacity:1}100%{transform:translateX(-30px) rotate(-6deg);opacity:0}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
-@media (max-width:700px){.hint{top:auto;bottom:18px;right:50%;margin-right:-70px}.hint .hand{width:54px;height:54px}}
-@media (prefers-reduced-motion:reduce){.hint .hand,.hint .chev{animation:none}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@media (max-width:700px){.hint{top:auto;bottom:18px;right:50%;margin-right:-70px}.hint .hand{width:72px;height:72px}}
+@media (prefers-reduced-motion:reduce){.hint .chev{animation:none}}
+
+/* ---------- feature grids ---------- */
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 clamp(20px,3vw,48px);border-top:3px solid var(--gold)}
+.ft{padding:1.4rem 0 1.7rem;border-bottom:1px solid rgba(241,233,212,.2)}
+.ft h3{font-size:clamp(1.35rem,1.9vw,1.75rem);color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.7rem}
+.ft h3::before{content:"";flex:none;width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+.ft p{margin:0;color:rgba(241,233,212,.8);font-size:1.02rem}
+.tgrid{grid-template-columns:repeat(3,1fr)!important}
+@media (max-width:980px){.tgrid{grid-template-columns:repeat(2,1fr)!important}}
+.tcard .frame{aspect-ratio:5/4!important}
+.band.bright .band-bg img{filter:brightness(1.9) contrast(1.05);object-position:50% 60%}
+
+/* product cards inside the sideways scroll */
+.dchap{flex:none;width:min(78vw,470px);background:var(--gold);color:var(--forest);padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;justify-content:center;gap:1rem;clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,0 100%)}
+.dchap h3{font-size:clamp(2.2rem,4vw,3.6rem)}
+.dchap p{margin:0}
+.dchap .btn{--bg:var(--forest);--fg:var(--canvas);align-self:flex-start;margin-top:.4rem}
+.dchap .eyebrow{margin:0}
+.pcard{flex:none;width:min(70vw,380px)!important;cursor:default}
+.pcard .frame.ar{aspect-ratio:4/3}
+.pcard .dcard-b{padding:1.1rem 1.3rem 1.4rem}
+.pcard h3{font-size:clamp(1.6rem,2.2vw,2.1rem)}
+.pcard p{font-size:.98rem}
+.hint img.hand{display:block}
+@media (max-width:700px){
+  .hint{top:96px!important;bottom:auto!important;right:var(--gut)!important;left:auto!important;margin:0!important}
+  .hint span{font-size:.72rem;letter-spacing:.12em;padding:.4rem .55rem}
+  .hint .hand{width:58px!important;height:58px!important}
+}
