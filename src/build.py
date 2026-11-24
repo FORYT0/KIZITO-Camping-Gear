@@ -21,11 +21,11 @@ def head(title,desc,page,og="img/og.jpg"):
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css"></head><body data-page="{page}">
 <a class="skip" href="#main">Skip to content</a>
-<header class="nav" id="nav"><a class="brand" href="index.html" aria-label="Kizito Camping Gear home"><img src="img/logo.png" alt="" width="42" height="59"><span><b>KIZITO</b><small>CAMPING GEAR</small></span></a>
+<header class="nav" id="nav"><a class="brand" href="index.html" aria-label="Kizito Camping Gear home"><img src="img/logo.jpg" alt="" width="42" height="59"><span><b>KIZITO</b><small>CAMPING GEAR</small></span></a>
 <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
 <nav class="links" id="links" aria-label="Main">{"".join(f'<a href="{h}"'+(' aria-current="page"' if h==page else '')+f'>{l}</a>' for h,l in NAV)}<a class="btn" href="contact.html">Get a Quote</a></nav></header><main id="main">'''
 def foot():
-    return f'''</main><footer class="foot"><div class="wrap"><div class="fgrid"><div><img class="fl" src="img/logo.png" alt="Kizito Camping Gear" width="120" height="170"><p><b>Engineered for the Outdoors.</b></p><p style="opacity:.7">Manufacturer · Supplier · Rental · Outdoor Outfitter</p></div>
+    return f'''</main><footer class="foot"><div class="wrap"><div class="fgrid"><div><img class="fl" src="img/logo.jpg" alt="Kizito Camping Gear" width="120" height="170"><p><b>Engineered for the Outdoors.</b></p><p style="opacity:.7">Manufacturer · Supplier · Rental · Outdoor Outfitter</p></div>
 <div><h4>Explore</h4><ul>{"".join(f'<li><a href="{h}">{l}</a></li>' for h,l in NAV)}<li><a href="contact.html">Contact</a></li></ul></div>
 <div><h4>We do</h4><ul><li>Tent manufacturing</li><li>Supply &amp; rentals</li><li>Overlanding truck builds</li><li>Camp management</li></ul></div>
 <div><h4>Reach us</h4><p><a href="https://wa.me/{WA}" rel="noopener">WhatsApp {TEL}</a></p><p>{BOX}</p></div></div>
@@ -53,6 +53,7 @@ h+=f'''<section class="hero"><div class="hero-bg" data-heropar>{img(1,"A long ro
 <div class="btns" style="margin-top:1.6rem"><a class="btn" href="about.html">Our story {ARW}</a></div></div>
 <div class="split-m" data-reveal>{sframe("s2","Canvas shelter and camp table at sunset in the highlands")}<p class="cap">Canvas camps, set up anywhere</p></div></div></section>
 <section class="hdiv" id="hdiv"><div class="hdiv-pin"><div class="hdiv-head"><div><p class="eyebrow">What we do</p><h2 class="h-lg" data-split>Four ways we serve the outdoors</h2></div><div class="hdiv-prog"><i></i></div></div>
+<div class="hint" id="hint" aria-hidden="true"><svg class="hand" viewBox="0 0 64 64" fill="rgba(241,233,212,.28)" stroke="rgba(241,233,212,.9)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M26 8c0-3 5-3 5 0v22l1-.5c2-1 5 0 5 2l1-.5c2-1 5 0 5 2l1-.5c2-1 5 0 5 3v10c0 8-6 14-14 14h-3c-5 0-8-2-11-6L12 40c-2-3 1-6 4-4l6 6V8c0-3 4-3 4 0z"/></svg><span>Keep scrolling</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 9l7 7 7-7"/></svg></div>
 <div class="hdiv-track">
 <a class="dcard" href="tents.html"><div class="frame"><div class="in">{img(23,"Dome tent next to a camp shower",t=True)}</div></div><div class="dcard-b"><span class="dcard-n">01</span><h3>Manufacturing</h3><p>Canvas, dome, group and expedition tents, made to take real weather.</p><span class="more">Explore tents {ARW}</span></div></a>
 <a class="dcard" href="tents.html#rentals"><div class="frame"><div class="in">{img(14,"Group of dome tents set up on grass",t=True)}</div></div><div class="dcard-b"><span class="dcard-n">02</span><h3>Supply &amp; rentals</h3><p>Buy or hire tents and camping equipment for schools, groups and events.</p><span class="more">Rentals {ARW}</span></div></a>
