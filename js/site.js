@@ -36,10 +36,10 @@ gsap.utils.toArray('[data-heropar]').forEach(function(b){gsap.to(b,{yPercent:14,
 var hd=$('#hdiv');
 if(hd){var tr=$('.hdiv-track',hd),pin=$('.hdiv-pin',hd),prog=$('.hdiv-prog i',hd);
  var dist=function(){return Math.max(0,tr.scrollWidth-window.innerWidth)};
- gsap.to(tr,{x:function(){return-dist()},ease:'none',scrollTrigger:{trigger:hd,start:'top top',end:function(){return'+='+dist()},pin:pin,scrub:.6,invalidateOnRefresh:true,anticipatePin:1,onUpdate:function(s){prog.style.transform='scaleX('+s.progress+')';var h=$('#hint');if(h){var dp=$('.dsec',hd),r=dp.getBoundingClientRect();h.classList.toggle('is-light',r.left<window.innerWidth-150);h.classList.toggle('is-off',s.progress>.985);h.classList.add('is-moving');clearTimeout(window._ht);window._ht=setTimeout(function(){h.classList.remove('is-moving')},260)}}}})}
+ gsap.to(tr,{x:function(){return-dist()},ease:'none',scrollTrigger:{trigger:hd,start:'top top',end:function(){return'+='+Math.round(dist()*(window.innerWidth<700?2.1:1.8))},pin:pin,scrub:1.1,invalidateOnRefresh:true,anticipatePin:1,onUpdate:function(s){prog.style.transform='scaleX('+s.progress+')';var h=$('#hint');if(h){var dp=$('.dsec',hd),r=dp.getBoundingClientRect();h.classList.toggle('is-light',r.left<window.innerWidth-150);h.classList.toggle('is-off',s.progress>.985);h.classList.add('is-moving');clearTimeout(window._ht);window._ht=setTimeout(function(){h.classList.remove('is-moving')},260)}}}})}
 /* fleet pan */
 var pan=$('#pan');
-if(pan){var pi=$('.pan-img',pan);gsap.to(pi,{x:function(){return-(pi.offsetWidth-pan.offsetWidth)},ease:'none',scrollTrigger:{trigger:pan,start:'top top',end:function(){return'+='+Math.max(500,pi.offsetWidth-pan.offsetWidth)},pin:true,scrub:.6,invalidateOnRefresh:true}})}
+if(pan){var pi=$('.pan-img',pan);gsap.to(pi,{x:function(){return-(pi.offsetWidth-pan.offsetWidth)},ease:'none',scrollTrigger:{trigger:pan,start:'top top',end:function(){return'+='+Math.max(900,Math.round((pi.offsetWidth-pan.offsetWidth)*1.8))},pin:true,scrub:1.1,invalidateOnRefresh:true}})}
 gsap.from('.hero .tags,.hero .lede,.hero .btns,.hero .crumb',{y:30,opacity:0,duration:1,delay:.35,stagger:.12,ease:'power3.out'});
 window.addEventListener('load',function(){ScrollTrigger.refresh()});
 })();
