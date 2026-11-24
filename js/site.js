@@ -32,11 +32,12 @@ gsap.utils.toArray('[data-reveal]').forEach(function(el){gsap.from(el,{y:50,opac
 gsap.utils.toArray('[data-par] img').forEach(function(im){gsap.fromTo(im,{scale:1.18,yPercent:-6},{scale:1,yPercent:6,ease:'none',scrollTrigger:{trigger:im.closest('.frame'),start:'top bottom',end:'bottom top',scrub:true}})});
 gsap.utils.toArray('[data-bandpar]').forEach(function(b){gsap.fromTo(b,{yPercent:-6},{yPercent:6,ease:'none',scrollTrigger:{trigger:b.parentNode,start:'top bottom',end:'bottom top',scrub:true}})});
 gsap.utils.toArray('[data-heropar]').forEach(function(b){gsap.to(b,{yPercent:14,ease:'none',scrollTrigger:{trigger:b.parentNode,start:'top top',end:'bottom top',scrub:true}})});
-/* pinned sideways divisions */
-var hd=$('#hdiv');
-if(hd){var tr=$('.hdiv-track',hd),pin=$('.hdiv-pin',hd),prog=$('.hdiv-prog i',hd);
+/* pinned sideways sections */
+$$('.hdiv').forEach(function(hd){
+ var tr=$('.hdiv-track',hd),pin=$('.hdiv-pin',hd),prog=$('.hdiv-prog i',hd),h=$('.hint',hd),dp=$('.dsec[data-light]',hd);
  var dist=function(){return Math.max(0,tr.scrollWidth-window.innerWidth)};
- gsap.to(tr,{x:function(){return-dist()},ease:'none',scrollTrigger:{trigger:hd,start:'top top',end:function(){return'+='+Math.round(dist()*(window.innerWidth<700?2.1:1.8))},pin:pin,scrub:1.1,invalidateOnRefresh:true,anticipatePin:1,onUpdate:function(s){prog.style.transform='scaleX('+s.progress+')';var h=$('#hint');if(h){var dp=$('.dsec',hd),r=dp.getBoundingClientRect();h.classList.toggle('is-light',r.left<window.innerWidth-150);h.classList.toggle('is-off',s.progress>.985);h.classList.add('is-moving');clearTimeout(window._ht);window._ht=setTimeout(function(){h.classList.remove('is-moving')},260)}}}})}
+ gsap.to(tr,{x:function(){return-dist()},ease:'none',scrollTrigger:{trigger:hd,start:'top top',end:function(){return'+='+Math.round(dist()*(window.innerWidth<700?2.1:1.8))},pin:pin,scrub:1.1,invalidateOnRefresh:true,anticipatePin:1,onUpdate:function(s){prog.style.transform='scaleX('+s.progress+')';
+  if(h){if(dp){var r=dp.getBoundingClientRect();h.classList.toggle('is-light',r.left<window.innerWidth-150)}h.classList.toggle('is-off',s.progress>.985);h.classList.add('is-moving');clearTimeout(h._t);h._t=setTimeout(function(){h.classList.remove('is-moving')},260)}}}})});
 /* fleet pan */
 var pan=$('#pan');
 if(pan){var pi=$('.pan-img',pan);gsap.to(pi,{x:function(){return-(pi.offsetWidth-pan.offsetWidth)},ease:'none',scrollTrigger:{trigger:pan,start:'top top',end:function(){return'+='+Math.max(900,Math.round((pi.offsetWidth-pan.offsetWidth)*1.8))},pin:true,scrub:1.1,invalidateOnRefresh:true}})}
