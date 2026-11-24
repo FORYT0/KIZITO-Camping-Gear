@@ -325,3 +325,27 @@ p{margin:0 0 1em}
   .hint span{font-size:.72rem;letter-spacing:.12em;padding:.4rem .55rem}
   .hint .hand{width:58px!important;height:58px!important}
 }
+
+/* cream product-range panel inside the sideways scroll */
+.dsec{position:relative;flex:none;display:flex;align-items:center;gap:clamp(16px,2.2vw,34px);padding-left:clamp(24px,3.4vw,56px);color:var(--ink)}
+.dsec::before{content:"";position:absolute;z-index:-1;top:-100vh;bottom:-100vh;left:0;right:calc(-1 * var(--gut));background:var(--canvas);background-image:repeating-radial-gradient(circle at 88% 10%,transparent 0 30px,rgba(91,52,34,.06) 30px 31px)}
+.dsec-t{flex:none;width:min(78vw,430px);display:flex;flex-direction:column;gap:1rem}
+.dsec-t .eyebrow{margin:0;color:var(--brown-2)}
+.dsec-t .eyebrow::before{background:var(--brown-2)}
+.dsec-t h3{font-size:clamp(2.2rem,4vw,3.6rem);color:var(--forest)}
+.dsec-t p{margin:0;color:var(--muted)}
+.dsec-t .btn{align-self:flex-start;--bg:var(--forest);--fg:var(--canvas)}
+.dsec .pcard{background:var(--paper);border-color:rgba(19,33,26,.22);color:var(--ink)}
+.dsec .pcard:hover{border-color:var(--brown-2)}
+.dsec .pcard h3{color:var(--forest)}
+.dsec .pcard p{color:var(--muted)}
+.dsec .pcard .dcard-n{color:var(--brown-2)}
+/* hint: always on through the scroll, dims while moving, adapts to the cream panel */
+.hint{transition:opacity .35s}
+.hint.is-moving{opacity:.3}
+.hint.is-off{opacity:0}
+.hint.is-light{color:var(--forest);text-shadow:none}
+.hint.is-light img.hand{filter:none;opacity:.55}
+.hint.is-light span{background:rgba(241,233,212,.7);border-color:rgba(91,52,34,.6)}
+.hint.is-light .chev{color:var(--brown-2)}
+@media (prefers-reduced-motion:reduce){.hint{display:none}}
