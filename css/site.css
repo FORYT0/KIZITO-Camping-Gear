@@ -359,3 +359,24 @@ p{margin:0 0 1em}
 .dsec.brown .dsec-t p{color:rgba(241,233,212,.85)}
 .dsec.brown .btn{--bg:var(--gold);--fg:var(--forest)}
 #hdiv2{background:var(--forest-2)}
+
+/* sideways sections: fit the screen so cards are never cut off, and let cards fill the space above them */
+@media (min-width:701px){
+  .hdiv-pin{height:100svh;min-height:0;box-sizing:border-box;gap:clamp(14px,2.4vh,28px);padding-block:clamp(74px,9vh,96px) clamp(18px,3.2vh,36px)}
+  .hdiv-head h2{max-width:24ch;font-size:clamp(2.2rem,4.6vw,4.4rem)}
+  .hdiv-track{flex:1 1 auto;min-height:0;align-items:stretch}
+  .dcard{height:100%;grid-template-rows:minmax(0,1fr) auto}
+  .dcard .frame,.dwide .frame,.pcard .frame.ar{aspect-ratio:auto!important;height:100%;min-height:0}
+  .dcard-b{padding:1rem 1.4rem 1.2rem;gap:.5rem}
+  .pcard{width:min(70vw,440px)!important}
+  .dsec{align-items:stretch}
+  .dsec-t{align-self:center}
+}
+
+@media (min-width:701px){
+  .hdiv-head>div:first-child{max-height:320px;transition:max-height .6s cubic-bezier(.2,.7,.2,1),opacity .4s;overflow:hidden}
+  .hdiv-pin.on-light .hdiv-head>div:first-child{max-height:0;opacity:0}
+  .hdiv-pin.on-light{gap:clamp(6px,1.2vh,14px)}
+  .hdiv-pin{transition:gap .6s}
+}
+@media (min-width:701px){.hdiv-pin.on-light .hint{opacity:0!important}}
